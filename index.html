@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dash Video DROPSMART</title>
+    <style>
+        * {margin: 0;padding: 0;word-wrap: break-word;box-sizing: border-box;}
+        html, body { height: 100%; max-width: 100vw;}
+        body { height: 98vh; background-color: #111;}
+        main iframe { margin: 15px auto 3px auto; max-width: 95vw; display: block; border: 1px solid #fff5;}
+        main div { margin: auto;  max-width: 70vw; color: #ccc;}
+        main fieldset { background-color: #111/*#760*/;}
+        main fieldset { padding-bottom: 6px; border-radius: 5px;}
+        main legend { margin-left: 12px; padding: 5px 12px;}
+        main legend { border: 1px solid #aec; border-radius: 1in;}
+        main form { text-align: center;}
+
+        #guibutton { margin: 0; width: 100vw; min-height: 30px; text-align: center; border: 1px dashed #ccc0; display: block;}
+        #guibutton input { padding: 1px 7px; display: inline-block; /*border-radius: 3px;*/ width: 50px;}
+        #gui3 { color: #fff; background-color: #fff2;}
+
+        #txt { margin: auto; padding: 3px 2px; display: block; background-color: #000;}
+
+        .listagem { margin: 5px 0; padding: 3px; max-height: 50vh; color: #fff; overflow: hidden; background-color: #0001;}
+        .listagem div { margin-top: 10px; max-height: 20vh; overflow-y: scroll; background-color: #000;} .listagem div::-webkit-scrollbar { background-color: #24022b73;}
+
+        #book_dropsmart { padding: 2px 0; background-color: #111; list-style: none;}
+        #book_dropsmart li { border: 1px dashed #f351;}
+
+        .listasumary:hover { color: #aeb128; }
+
+        /**/
+        #guiaslateraiscabecalho ul { position: fixed; margin: 2vh 0; top: 0px; left: 0px; list-style: none; z-index: 10000;}
+        #guiaslateraiscabecalho li { margin-bottom: 4px; padding: 5px 7px 5px 4px; border-radius: 0 6px 6px 0; background-color: #222;}
+        #guiaslateraiscabecalho li:hover { background-color: #ff00ff80;}
+
+        #notacoes { margin: 2px auto; padding: 5px 7px; min-width: 70vw; max-width: 70vw; width: 70vw; max-height: 30vh; color: #727272; font-size: 14pt; display: none; background-color: #333;}
+    </style>
+</head>
+<body>
+    <main>
+        <div id="toolsone" style="text-align: center;"><textarea id="notacoes" placeholder="Para recuperar texto de dois cliques." cols="50" rows="3" keyup="salvar()"></textarea>
+        </div>
+        <iframe id="quadrofr" width="560" height="315" src="https://www.youtube.com/embed/" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div>
+            <section>
+                <div id="guibutton">
+                    << <input type="button" name="guia" id="gui1" value="Back">
+                    <input type="txt" name="guia" id="gui3" style="margin: 0 25px; text-align: center;">
+                    <input type="button" name="guia" id="gui2" value="Next"> >>
+                </div>
+                <fieldset>
+                    <legend>Expo</legend>
+                    <form action="" id="guiaselect">
+                        <p id="txt">Aguardando Seu Comando...</p>
+                    </form>
+                </fieldset>
+                
+            </section>
+            <div class="listagem">
+                <h1 name="subsumary">Dropsmart <b style="position: absolute; margin: 5px 3px; width: auto; font-size: 10px;color:#ffa500; display: inline-block;" name="sumarytotal"></b></h1>
+                <div>
+                    <ul id="book_dropsmart">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="guiaslateraiscabecalho" class="gridemenutop">
+            <ul>
+                <li name="tooltop">Notas</li>
+                <li name="tooltop">URL</li>
+                <li name="tooltop">[ ]</li>
+            </ul>
+            
+        </div>
+    </main>
+    <!-- BIBLIOTECA *SNNIPET COOKIE
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    -->
+    <script>
+        var dropsmartyt = ['1JekjQ5wwiA','73dIsr555vE','lWWVcI1h92c','8tBNiKpzJUw','gMJIoMEmsxM','3HlzBXuPHBg','1ReEx7mnYpQ','gsYrtobia44','Di5dZJQikOU','uCP-09BQX0s','eu6xJPNJSG8','fvr4mwLaw9g','UYFXaBpVLzQ','uMkuRggOm0U','8icHYz5u31Y','pFL-oicVJn8','SKyxLj6bmng','i_kpjjdjW8o','lMfickVrSFQ','SPp1W-uQhxY','VAkA4nWyDF4','6cG-jw-ZHDo','Xs1qoaRFY7Y','kmU-l6J-k-A','GPvhhZ7Z6fU','vmvlUKXGhrk','gBAHmdA4a9o','p4snOblLY3w','gNxA5692808','E00yy6f-AVk','t5Ft070lXSc','tJnJRR_Rt6U','Gz588riSr4o','MthUrG1Um4c','bFZPRH-KFEU','JvV-kWdNjl0','BFiFtVNje_I','6YCrhynHkts','I8V9hEj69TI','ckGPuYDSmaw','3LFrBVShQWc','d7zg0pVQ9uo','GACzyN34rIk','sVNv9Su7dbc','9krciSU-qHg','Fud2kYIgkBE','39wLb_uZJxU','sfJnGaKKxas','9UhQ5Ft8RqQ','1o5b2Zy3STg','QNN4cGRtqWQ','9KcP1uhOlVs'];
+        var dropytttle = ['Como não perder seu acesso ao universo Dropsmart','A grande oportunidade','O que é o método LVE','Definindo o nicho da sua loja','Escolhendo o nome da sua loja','Por que criar sua loja virtual?','Criando sua loja na Shopify','Mercado Pago','Garantindo a melhor experiência no D21D','Acessando o canal de avisos do Telegram','Comunidade Dropsmart','Mentoria gratuita com os instrutores','Liberando os próximos conteúdos','Tenha acesso a conteúdos completos','Regras','Certificado','Cpf ou Cnpj?','Configurações básicas de loja','O universo Dropsmart','Produto principal vs produto satélite','[Método 1 - espionagem] Ideias de produtos','[Método 2 - dor] Ideias de produtos','[Método 3 - tendências] Ideias de produtos','Ideias de produtos Método 4 Automático','Encontrando os produtos principais','Encontrando os produtos satélites','Avaliando fornecedores','Proximos Passos','Logica de Precificação','Definindo a Precificação','Cadastrando o Produto na Loja','Configurando o Envio Automatico de Pedidos para o Fornecedor','Revisão do Módulo e Próximos Passos','Criando uma Oferta Irresistível','Estratégias de Frete','O Que Copy','Conceitos Básicos de Copy','Modelo de Copy Básico','Instalando o Tema Dropsmart','Como Funciona o Tema Dropsmart','Organizando as Páginas da Sua Loja','Configurando as Coleções de Produtos','Customizado a Página Inicial','Customizado a Página do Produto','Configurando um Domínio Customizado','O que é um Gateway','Configurando o Mercado Pago','Método de Vendas','Vendendo com Conteúdos em Redes Sociais','Fazendo Vendas Diretas','Vendendo Com Influenciadores','Você está a um Passo de Dizerem ue foi Sorte'];
+        var outros = {DSers_Aliexpress:'F3KGiL1KzrY'};
+    </script>
+    <script>
+    /**/// ITENS DE TELA
+        var ytembed = "https:www.youtube.com/embed/"; //STRING URL BASE YOUTUBE VIDEO
+        var posicao = -1; //INDICE DE POSICIONAMENTO DE COMANDO PARA SUFIXO ARRAY *VIDEO/ "YT DROPSMART"
+        var expo = document.getElementById('txt'); //CAIXA DE PARAGRAFO DE INDICAÇÃO DO ATIVO *legenda Expo
+        var countyt = dropsmartyt.length; //CONTAGEM NUMERO SUFIXO YOUTUBE VIDEO - DROPSMART*CANAL,CONTEUDO
+        var listadrop = ""; //VARIAVEL CONTAINER PARA ENTRADA DE LISTAGEM TAG <li> TOTAL DE ITENS SUMARIO DROPSMART - LISTA DE CONSULTA VISUAL *entrada FOR
+        var subsumary = document.getElementsByName('subsumary'); //ARRAY DE TITULO DAS DISPOSIÇÕES DE APRESENTAÇÃO DE SUMARIO VISUAL - Ex. <h1>DROPSMART(52)
+        var displaylst = 0; //CHAVE CONDICIONAL DE VISUALIZAÇÃO DA CONSULTA VISUAL DE INDICE
+        var sumarytotal = document.getElementsByName('sumarytotal'); //INDICE DE INDICAÇÃO VISUAL ACIMA DO TITULO SOBRE O TOTAL DA LISTAGEM - OPÇÃO REFERENCIAL
+        var toptools = document.getElementsByName('tooltop'); //ARRAY PARA OS ITENS MENU DE TOP FIXO *notas,url,..
+        var antiQuadro = document.getElementById('toolsone'); //VARIAVEL DE CONTATO TAG *textarea/notacoes
+        var notas = document.getElementById('notacoes');
+        let world;
+
+        window.addEventListener('keyup', function(){ world=document.body.innerHTML;});
+
+        for(i=0;i<countyt&&i> -1;i++) { listadrop += `<li class="listasumary">${i} - ${dropytttle[i]}</li>`}; //CONTAGEM E ADIÇÃO DO SUMARIO DA *listadrop NA VARIAVEL CONTAINER
+
+            subsumary[0].addEventListener('click', function() { if(displaylst === 0){book_dropsmart.innerHTML += listadrop; displaylst = 1;} else if(displaylst === 1) { book_dropsmart.innerHTML = ""; displaylst = 0;} })
+
+            //COMANDOS DE ESCUTA TROCA DE VIDEO
+            gui1.addEventListener('click', anterior); //VOLTAR -1
+            gui2.addEventListener('click', proximo); //AVANÇAR +1
+            gui3.addEventListener('keyup', numeroindicado); //POSIÇÃO MANUAL
+
+        sumarytotal[0].innerHTML = countyt;//INSERE NUMERO TOTAL DA LISTA ACIMA DO TITULO *Dropsmart
+
+        //FUNÇÕES DA ESCUTA DE TROCA DE VIDEO/"IFRAME"
+        function proximo() {
+            if(posicao < countyt && posicao > -2) {
+                expo.innerHTML = ++posicao+" - "+dropytttle[posicao];
+                abrirvideo();
+                gui3.value = posicao;
+            }            
+        }
+        function anterior() {
+            if(posicao >= 0) {
+                expo.innerHTML = --posicao+" - "+dropytttle[posicao];
+                abrirvideo();
+                gui3.value = posicao;
+            }
+        }
+        function numeroindicado() {
+            if(this.value > -1 && this.value < countyt) {
+            expo.innerHTML = this.value+" - "+dropytttle[this.value];
+            quadrofr.src = ytembed+dropsmartyt[this.value]; posicao = this.value;
+            } else { gui3.value = ""; expo.innerHTML = "";}
+        }
+
+        //EXECUTA A ENTRADA PARA O IFRAME
+        function abrirvideo() {
+            quadrofr.src = ytembed+dropsmartyt[posicao];
+
+            if(expo.innerHTML === "-1 - undefined") {
+            expo.innerHTML = "";
+            }
+        }
+
+        //
+            toptools[0].addEventListener('click', drawleaf);
+        function drawleaf() {
+            var dsplNtas = notas.style.display;
+
+            if(dsplNtas !== "block") {
+                notas.style.display = "block";
+            } else if(dsplNtas !== "none") {
+                notas.style.display = "none";
+            }
+        }
+        //
+            toptools[1].addEventListener('click', newUrl);
+            function newUrl() {
+                var resposta = prompt();
+                var n = resposta.length;
+                if(n > 7) {
+                    quadrofr.src = resposta;
+                }
+            }
+        //
+            toptools[2].addEventListener('click', maxTela);
+        function maxTela() {
+            var tela = quadrofr.style.width;
+
+            if(tela <= "70vw") {
+                quadrofr.style.width = "95vw";
+                quadrofr.style.height = "53vh";
+            } else if(tela > "70vw") {
+                quadrofr.style.width = "70vw";
+                quadrofr.style.height = "";
+            }
+        }
+
+        //
+            notas.addEventListener('change', salvar);
+        function salvar() {
+            var nCookie = "Notas ";
+            var vCookie = notas.value; //vCookie = encodeURI(vCookie);
+            var xdata = new Date(2030,0,01); xdata=xdata.toGMTString();
+
+            document.cookie = nCookie+"=   "+vCookie+"; expires="+xdata+"; path=/";
+            //alert("CERTO CERTO CERTO")
+        }
+            notas.addEventListener('dblclick', restauranotas);
+        function restauranotas(nCookie) {
+            //alert("Recuperando Notas...");
+            var cookado = document.cookie.split(';');
+            var corteCookie = document.cookie.split('[/p]');
+
+            notas.value = cookado[1];
+        }
+   </script>
+    <script>
+        /**/ // COOKIE DASH VIDEO PAGE
+            window.addEventListener('blur', cookye); //COOKIE LOAD DE REGISTRO DA PAGINA
+        function cookye(nome, valor, expira) {
+            var a = "Cookie Index";
+            var b = quadrofr.src;
+            var c = new Date(9999,0,01);
+            var d = c.toGMTString();
+
+            document.cookie = a+"="+b+"; expires= "+d+"; path=/";
+
+            //showCookie();
+        }
+            
+    /*
+        function showCookie(notas) {
+            var leaf = document.cookie.split(';');
+            //alert(leaf);
+        }*/
+
+    </script>
+</body>
+</html>
